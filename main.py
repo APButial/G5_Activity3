@@ -59,47 +59,51 @@ st.dataframe(df.describe())
 
 
 # Table 7 - Payment Method Distribution - Ongtangco
+st.write("")
+
 def pie_chart():
-  """
-  Payment Methods Distribution in a pie chart format
-  """
+    """
+    Payment Methods Distribution in a pie chart format
+    """
 
-  #CSV file has multiple instances of PayPal being spelled with a lower case p (Paypal)
-  #Following code allows for PayPal and Paypal to be treated as the same value
-  df['Payment Method'] = df['Payment Method'].replace({'PayPal': 'PayPal', 'Paypal': 'PayPal'})
+    # Treat PayPal and Paypal as the same value
+    df['Payment Method'] = df['Payment Method'].replace({'PayPal': 'PayPal', 'Paypal': 'PayPal'})
 
+    payment_counts = df['Payment Method'].value_counts()
+    pie_colors = ['skyblue', 'salmon', 'yellow', 'lightgreen', 'orange']
 
-  payment_counts = df['Payment Method'].value_counts()
-  labels = payment_counts.index
-  pie_colors = ['skyblue', 'salmon', 'yellow', 'lightgreen', 'orange']
-  plt.figure(figsize=(8, 8))
-  plt.pie(payment_counts, labels=payment_counts.index, autopct='%1.1f%%', startangle=140, colors=pie_colors, )
-  plt.title('Payment Method Distribution')
-  plt.axis('equal')
-  plt.show()
+    # Create pie chart
+    fig, ax = plt.subplots(figsize=(8, 8))
+    ax.pie(payment_counts, labels=payment_counts.index, autopct='%1.1f%%', startangle=140, colors=pie_colors)
+    ax.set_title('Payment Method Distribution')
+    ax.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle
 
-st.pyplot(plt)
+    # Display chart with Streamlit
+    st.pyplot(fig)
 
 
 # Table 8 - Total Sales Overtime - Ongtangco
 def line_chart():
-  """
-  Total sales over time in a line chart format
-  """
+    """
+    Total sales over time in a line chart format
+    """
 
-  df['Purchase Date'] = pd.to_datetime(df['Purchase Date'])
-  monthly_sales = df.groupby(df['Purchase Date'].dt.to_period('M'))['Total Price'].sum()
-  monthly_sales.index = monthly_sales.index.to_timestamp()
+    df['Purchase Date'] = pd.to_datetime(df['Purchase Date'])
+    monthly_sales = df.groupby(df['Purchase Date'].dt.to_period('M'))['Total Price'].sum()
+    monthly_sales.index = monthly_sales.index.to_timestamp()
 
-  plt.plot(monthly_sales.index, monthly_sales.values, marker='o', color='b', linestyle='-')
+    # Create line chart
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.plot(monthly_sales.index, monthly_sales.values, marker='o', color='b', linestyle='-')
 
-  plt.title('Total Sales Overtime')
-  plt.xlabel('Purchase Date (in months)')
-  plt.ylabel('Total Price (in millions)')
-  plt.xticks(rotation=45)
-  plt.show()
+    # Customize chart
+    ax.set_title('Total Sales Overtime')
+    ax.set_xlabel('Purchase Date (in months)')
+    ax.set_ylabel('Total Price (in millions)')
+    ax.tick_params(axis='x', rotation=45)
 
-st.pyplot(plt)
+    # Display chart with Streamlit
+    st.pyplot(fig)
 
 # Table 9 - Average Rating Over Time - Tan
 
