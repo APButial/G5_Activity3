@@ -78,7 +78,7 @@ def pie_chart():
   plt.axis('equal')
   plt.show()
 
-pie_chart()
+st.pyplot(plt)
 
 
 # Table 8 - Total Sales Overtime - Ongtangco
@@ -99,7 +99,7 @@ def line_chart():
   plt.xticks(rotation=45)
   plt.show()
 
-line_chart()
+st.pyplot(plt)
 
 # Table 9 - Average Rating Over Time - Tan
 
