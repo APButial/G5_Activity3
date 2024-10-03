@@ -59,27 +59,26 @@ st.dataframe(df.describe())
 
 
 # Table 7 - Payment Method Distribution - Ongtangco
-st.write("")
-
 def pie_chart():
     """
     Payment Methods Distribution in a pie chart format
     """
-
-    # Treat PayPal and Paypal as the same value
-    df['Payment Method'] = df['Payment Method'].replace({'PayPal': 'PayPal', 'Paypal': 'PayPal'})
+    df['Payment Method'] = df['Payment Method'].replace({'Paypal': 'PayPal'})
 
     payment_counts = df['Payment Method'].value_counts()
+    labels = payment_counts.index
     pie_colors = ['skyblue', 'salmon', 'yellow', 'lightgreen', 'orange']
 
-    # Create pie chart
     fig, ax = plt.subplots(figsize=(8, 8))
-    ax.pie(payment_counts, labels=payment_counts.index, autopct='%1.1f%%', startangle=140, colors=pie_colors)
+    ax.pie(payment_counts, labels=labels, autopct='%1.1f%%', startangle=140, colors=pie_colors)
     ax.set_title('Payment Method Distribution')
-    ax.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle
+    ax.axis('equal')
 
-    # Display chart with Streamlit
+    # Display the chart using Streamlit
     st.pyplot(fig)
+
+st.header('Payment Method Distribution')
+pie_chart()
 
 
 # Table 8 - Total Sales Overtime - Ongtangco
@@ -87,23 +86,22 @@ def line_chart():
     """
     Total sales over time in a line chart format
     """
-
     df['Purchase Date'] = pd.to_datetime(df['Purchase Date'])
     monthly_sales = df.groupby(df['Purchase Date'].dt.to_period('M'))['Total Price'].sum()
     monthly_sales.index = monthly_sales.index.to_timestamp()
 
-    # Create line chart
-    fig, ax = plt.subplots(figsize=(10, 5))
+    fig, ax = plt.subplots()
     ax.plot(monthly_sales.index, monthly_sales.values, marker='o', color='b', linestyle='-')
-
-    # Customize chart
     ax.set_title('Total Sales Overtime')
     ax.set_xlabel('Purchase Date (in months)')
     ax.set_ylabel('Total Price (in millions)')
-    ax.tick_params(axis='x', rotation=45)
+    plt.xticks(rotation=45)
 
-    # Display chart with Streamlit
+    # Display the chart using Streamlit
     st.pyplot(fig)
+
+st.header('Total Sales Over Time')
+line_chart()
 
 # Table 9 - Average Rating Over Time - Tan
 
