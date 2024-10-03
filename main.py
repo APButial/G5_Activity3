@@ -74,7 +74,7 @@ def pie_chart():
     ax.set_title('Payment Method Distribution')
     ax.axis('equal')
 
-    # Display the chart using Streamlit
+    # Display the chart
     st.pyplot(fig)
 
 st.header('Payment Method Distribution')
@@ -97,7 +97,7 @@ def line_chart():
     ax.set_ylabel('Total Price (in millions)')
     plt.xticks(rotation=45)
 
-    # Display the chart using Streamlit
+    # Display the chart
     st.pyplot(fig)
 
 st.header('Total Sales Over Time')
