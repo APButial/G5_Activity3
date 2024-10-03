@@ -59,12 +59,47 @@ st.dataframe(df.describe())
 
 
 # Table 7 - Payment Method Distribution - Ongtangco
+def pie_chart():
+  """
+  Payment Methods Distribution in a pie chart format
+  """
 
+  #CSV file has multiple instances of PayPal being spelled with a lower case p (Paypal)
+  #Following code allows for PayPal and Paypal to be treated as the same value
+  df['Payment Method'] = df['Payment Method'].replace({'PayPal': 'PayPal', 'Paypal': 'PayPal'})
+
+
+  payment_counts = df['Payment Method'].value_counts()
+  labels = payment_counts.index
+  pie_colors = ['skyblue', 'salmon', 'yellow', 'lightgreen', 'orange']
+  plt.figure(figsize=(8, 8))
+  plt.pie(payment_counts, labels=payment_counts.index, autopct='%1.1f%%', startangle=140, colors=pie_colors, )
+  plt.title('Payment Method Distribution')
+  plt.axis('equal')
+  plt.show()
+
+pie_chart()
 
 
 # Table 8 - Total Sales Overtime - Ongtangco
+def line_chart():
+  """
+  Total sales over time in a line chart format
+  """
 
+  df['Purchase Date'] = pd.to_datetime(df['Purchase Date'])
+  monthly_sales = df.groupby(df['Purchase Date'].dt.to_period('M'))['Total Price'].sum()
+  monthly_sales.index = monthly_sales.index.to_timestamp()
 
+  plt.plot(monthly_sales.index, monthly_sales.values, marker='o', color='b', linestyle='-')
+
+  plt.title('Total Sales Overtime')
+  plt.xlabel('Purchase Date (in months)')
+  plt.ylabel('Total Price (in millions)')
+  plt.xticks(rotation=45)
+  plt.show()
+
+line_chart()
 
 # Table 9 - Average Rating Over Time - Tan
 
