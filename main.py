@@ -67,9 +67,8 @@ def line_chart():
 
 line_chart()
 
-#Observation:
-#-The chart highlights a strong preference for Standard shipping which dwarfs in comparison to other 
-#shipping types like Expedited, Express, and Overnight, while Same Day shipping shows the lowest sales count.
+st.write("### Key Observations:")
+st.write("- The chart highlights a strong preference for Standard shipping which dwarfs in comparison to other shipping types like Expedited, Express, and Overnight, while Same Day shipping shows the lowest sales count.")
 
 # Table 6 - Order Status by Product Type - Lim, K.
 def pie_chart():
@@ -96,13 +95,9 @@ def pie_chart():
 
 pie_chart()
 
-#Observation:
-#-This graph highlights that customers prefer smartphones, leading at 29.9%, followed by tablets at 20.5%,
-#laptops and smartwatches at 19.9% and 19.7%, and finally, headphones being the least preferred at 10.1%.
-
-#- The data showcases a high customer preference for handheld devices such as smartphones and tablets, 
-# with their accesssories, like smartwatches and headphones are less prefered.
-
+st.write("### Key Observations:")
+st.write("- This graph highlights that customers prefer smartphones, leading at 29.9%, followed by tablets at 20.5%, laptops and smartwatches at 19.9% and 19.7%, and finally, headphones being the least preferred at 10.1%.")
+st.write("- The data showcases a high customer preference for handheld devices such as smartphones and tablets, with their accesssories, like smartwatches and headphones are less prefered.")
 
 
 # Table 7 - Payment Method Distribution - Ongtangco
