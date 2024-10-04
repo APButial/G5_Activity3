@@ -63,6 +63,12 @@ def quantity_sold_by_prodtype():
 
 quantity_sold_by_prodtype()
 
+#Observation
+#Smartphone devices have the highest quantity sold among other electronics. Over **16,000** were sold from September 2023 to September 2024. On the other hand, **headphones** have the least quantity sold of less than **60,000**. Smartwatches, laptops, and tablets, sold were relatively equal.
+
+
+
+
 # Table 4 - Quantity Sold by Smartphone Model - Lim, E.
 #Lim Evan
 def quantity_sold_by_smartphone_model():
@@ -93,6 +99,9 @@ def quantity_sold_by_smartphone_model():
 
 #Calls the function quantity_sold_by_smartphone_model()
 quantity_sold_by_smartphone_model()
+
+#Observation
+#The smartphone model SKU1004 has the highest numbers sold, while the SKU1005 being the least bought. Still, the numbers sold by SKU1001 and SMP234 are comparable to SKU1004. These three models are selling well.
 
 
 # Table 5 - Shipping Type by Product Type - Lim, K.
