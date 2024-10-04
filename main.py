@@ -153,12 +153,50 @@ st.write("- The data showcases a high customer preference for handheld devices s
 
 
 # Table 7 - Payment Method Distribution - Ongtangco
+def pie_chart():
+    """
+    Payment Methods Distribution in a pie chart format
+    """
+    df['Payment Method'] = df['Payment Method'].replace({'Paypal': 'PayPal'})
 
+    payment_counts = df['Payment Method'].value_counts()
+    labels = payment_counts.index
+    pie_colors = ['skyblue', 'salmon', 'yellow', 'lightgreen', 'orange']
 
+    fig, ax = plt.subplots(figsize=(8, 8))
+    ax.pie(payment_counts, labels=labels, autopct='%1.1f%%', startangle=140, colors=pie_colors)
+    ax.set_title('Payment Method Distribution')
+    ax.axis('equal')
+
+    # Display the chart
+    st.pyplot(fig)
+
+st.header('Payment Method Distribution')
+pie_chart()
+st.write("The majority of customers utilized credit cards (29.3%) and PayPal (29.0%) for payments, followed by bank transfers (19.9%), cash (12.5%), and debit cards (12.4%).")
 
 # Table 8 - Total Sales Overtime - Ongtangco
+def line_chart():
+    """
+    Total sales over time in a line chart format
+    """
+    df['Purchase Date'] = pd.to_datetime(df['Purchase Date'])
+    monthly_sales = df.groupby(df['Purchase Date'].dt.to_period('M'))['Total Price'].sum()
+    monthly_sales.index = monthly_sales.index.to_timestamp()
 
+    fig, ax = plt.subplots()
+    ax.plot(monthly_sales.index, monthly_sales.values, marker='o', color='b', linestyle='-')
+    ax.set_title('Total Sales Overtime')
+    ax.set_xlabel('Purchase Date (in months)')
+    ax.set_ylabel('Total Price (in millions)')
+    plt.xticks(rotation=45)
 
+    # Display the chart
+    st.pyplot(fig)
+
+st.header('Total Sales Over Time')
+line_chart()
+st.write("Sales experienced a decline at the end of September, followed by a significant surge in December. This was followed by a decrease toward the end of December, with a gradual recovery beginning in late January, before sharply declining again at the start of September.")
 
 # Table 9 - Average Rating Over Time - Tan
 
