@@ -102,7 +102,6 @@ def line_chart():
 
 st.header('Total Sales Over Time')
 line_chart()
-
 st.write("Sales experienced a decline at the end of September, followed by a significant surge in December. This was followed by a decrease toward the end of December, with a gradual recovery beginning in late January, before sharply declining again at the start of September.")
 
 # Table 9 - Average Rating Over Time - Tan
