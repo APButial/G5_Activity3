@@ -212,7 +212,6 @@ def pie_chart():
   ax.axis('equal')
 
   # Display the chart
-  st.header('Payment Method Distribution')
   st.pyplot(fig)
   st.write("""
             The majority of customers utilized credit cards (29.3%) and PayPal (29.0%) for payments, 
