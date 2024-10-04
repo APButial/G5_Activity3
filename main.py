@@ -163,7 +163,7 @@ def line_chart():
 
     monthly_sales = df.groupby('Shipping Type')['Product Type'].count()
 
-    fig, ax = plt.subplots(figsize=(10, 5)) 
+    fig, ax = plt.subplots(figsize=(10, 5)) http://localhost:8501/
     ax.bar(monthly_sales.index, monthly_sales.values, color='b') 
     ax.set_title('Total Sales by Shipping Type')
     ax.set_xlabel('Shipping Type')
@@ -254,10 +254,6 @@ line_chart()
 st.write("Sales experienced a decline at the end of September, followed by a significant surge in December. This was followed by a decrease toward the end of December, with a gradual recovery beginning in late January, before sharply declining again at the start of September.")
 
 # Table 9 - Average Rating Over Time - Tan
-import pandas as pd
-import streamlit as st
-import matplotlib.pyplot as plt
-
 def average_rating_over_time():
     """
     Creates a line chart showing the average rating over time.
@@ -297,9 +293,8 @@ def average_rating_over_time():
     st.write("-  Starting from April 2024, there were fluctuations in the observed average rating")
     st.write("- However, a decline in average ratings was observed from June 2024 onwards.")
 
-if __name__ == "__main__":
-    st.title("Average Rating Over Time Period")
-    average_rating_over_time()
+st.title("Average Rating Over Time Period")
+average_rating_over_time()
 
 
 # Table 10 - Loyalty by Time - Tan
@@ -340,9 +335,9 @@ def loyalty_by_time_linechart():
     st.write("- However from March 2024 to May 2024, the number of loyalty members remained relatively stable, meaning the growth rate stabalied during this time.")
     st.write("- And finally the number of loyalty members decreased from June 2024 to September 2024, indicating a potential issue with member retention or a decline in new memberships.")
 
-if __name__ == "__main__":
-    st.title("Loyalty Members Over Time Period")
-    loyalty_by_time_linechart()
+
+st.title("Loyalty Members Over Time Period")
+loyalty_by_time_linechart()
 # Conclusion
 st.write("""
         # Conclusion
