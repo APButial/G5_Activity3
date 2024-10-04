@@ -34,40 +34,34 @@ st.dataframe(df.isna().sum())
 # Show quantities
 st.dataframe(df.describe())
 
-# Table 1 - Gender Distribution - Lim, E.
-#Lim Evan
-def consumer_gender_distribution():
-    """
-    Displays a pie chart showing the gender distribution of consumers
-    """
-
-    # Counts the number of each gender
-    gender_counts = df['Gender'].value_counts()
-
-    # Sets the Label in the Pie Chart
-    labels = gender_counts.index
-
-    # Sets the color in each gender
-    colors = ['skyblue', 'pink']
-
-    #Creating and Setting up the Pie Chart
-    plt.figure(figsize=(8,8))
-    plt.pie(gender_counts, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90)
-    plt.title('Consumer Gender Distribution')
-    plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    plt.show()
-
-#Call the fucnction
-consumer_gender_distribution()
+# Table 1 - Gender Distribution - Butial
 
 
 # Table 2 - Age Distribution - Butial
 
 
 
-# Table 3 - Quantity Sold by Product Type - Butial
+# Table 3 - Quantity Sold by Product Type - Lim, E.
+def quantity_sold_by_prodtype():
+  """
+  quantity sold by product type in bar chart
+  """
+  # only completed orders will be considered sold via boolean masking
+  completed_orders = df['Order Status'] == 'Completed'
+  filtered = df.where(completed_orders).dropna()
+
+  # creates an array of quantity sold indexed by product type
+  quantity_sold_array = filtered['Quantity'].groupby(filtered['Product Type']).sum().sort_values()
+
+  colors = ['skyblue', 'orange', 'salmon', 'lightgreen', 'yellow']
+  plt.bar(quantity_sold_array.index, quantity_sold_array.values, color=colors, edgecolor='black')
+  plt.xlabel('Product Type')
+  plt.ylabel('Quantity Sold')
+  plt.title('Quantity Sold by Product Type')
+  plt.show()
 
 
+quantity_sold_by_prodtype()
 
 # Table 4 - Quantity Sold by Smartphone Model - Lim, E.
 #Lim Evan
