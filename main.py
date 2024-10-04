@@ -79,7 +79,7 @@ def pie_chart():
 
 st.header('Payment Method Distribution')
 pie_chart()
-
+st.write("The majority of customers utilized credit cards (29.3%) and PayPal (29.0%) for payments, followed by bank transfers (19.9%), cash (12.5%), and debit cards (12.4%).")
 
 # Table 8 - Total Sales Overtime - Ongtangco
 def line_chart():
@@ -102,6 +102,8 @@ def line_chart():
 
 st.header('Total Sales Over Time')
 line_chart()
+
+st.write("Sales experienced a decline at the end of September, followed by a significant surge in December. This was followed by a decrease toward the end of December, with a gradual recovery beginning in late January, before sharply declining again at the start of September.")
 
 # Table 9 - Average Rating Over Time - Tan
 
