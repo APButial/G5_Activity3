@@ -8,8 +8,8 @@ The application shows various data visualization tools, such as pie charts, bar 
 [Customer purchase behavior - Electronic Sales Data](https://www.kaggle.com/datasets/cameronseamons/electronic-sales-sep2023-sep2024)
 
 ## Group Members:
-Butial, Aivann Paul O.
-Lim, Evan Vincent B.
-Lim, Kyle Hendrik L.
-Ongtangco, Randolph Joshua M.
-Tan, Gabriel Christian D.
+* Butial, Aivann Paul O.
+* Lim, Evan Vincent B.
+* Lim, Kyle Hendrik L.
+* Ongtangco, Randolph Joshua M.
+* Tan, Gabriel Christian D.
